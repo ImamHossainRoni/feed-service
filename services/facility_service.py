@@ -9,3 +9,6 @@ class FacilityService(Service):
     async def get_all_facilities(self):
         """Fetch all facilities using DAO"""
         return await self.dao.get_all()
+
+    async def insert_facilities(self, facility_data: list[list]):
+        await self.dao.save_batch(facility_data)

@@ -35,6 +35,12 @@ class Database:
         async with self._pool.acquire() as connection:
             return await connection.execute(query, *args)
 
+    async def executemany(self, query, args_list):
+        """Execute the same query multiple times with different parameters in a single transaction."""
+        async with self._pool.acquire() as connection:
+            async with connection.transaction():
+                await connection.executemany(query, args_list)
+
     async def close_pool(self):
         """Close the database connection pool"""
         if self._pool:
