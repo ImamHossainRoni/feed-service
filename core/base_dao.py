@@ -51,6 +51,20 @@ class Dao(ABC):
                 print(e)
                 print(batch[i])
 
+    async def get_paginated(self, limit: int = 100, offset: int = 0):
+        """Fetch records with LIMIT and OFFSET for pagination"""
+        query = f"""
+                SELECT * FROM {self.table_name}
+                ORDER BY id ASC
+                LIMIT $1 OFFSET $2;
+                """
+        print(query)
+        print("-------------")
+        print(limit)
+        print("-------------")
+        print(offset)
+        return await self.db.fetch(query, limit, offset)
+
 
 
 
