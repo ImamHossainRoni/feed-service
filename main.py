@@ -18,9 +18,9 @@ async def main():
     # facilities = fake_data_generator.generate_fake_facilities(1000)
     # await facility.insert_facilities(facilities)
 
-    facilities = await facility.get_all_facilities()
-    print(facilities)
-    print(len(facilities))
+    # facilities = await facility.get_all_facilities()
+    # print(facilities)
+    # print(len(facilities))
 
     # page = 1
     # page_size = 100
